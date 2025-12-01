@@ -1,0 +1,7 @@
+{
+  "name": "Copy of  Convers PRO!",
+  "description": "An application to analyze a file of people and their incomes. It identifies the top earners and formats their information with a specified organization name and INN.",
+  "requestFramePermissions": [
+    "display-capture"
+  ]
+}

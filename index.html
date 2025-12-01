@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convers PRO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <style>
+      html {
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=2092&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: #1f2937; /* Fallback color */
+        transition: background-image 0.5s ease-in-out;
+      }
+      body {
+        margin: 0;
+        min-height: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Sakura Petals Animation */
+      .sakura-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .petal {
+        position: absolute;
+        top: -5%;
+        background-color: rgba(255, 192, 203, 0.8); /* Pink */
+        box-shadow: 0 0 5px rgba(255, 192, 203, 0.5);
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      
+      .dollar {
+        position: absolute;
+        top: -10%;
+        color: #0891b2; /* Neon Cyan */
+        font-size: 24px;
+        text-shadow: 0 0 8px #0891b2, 0 0 12px #0891b2;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        user-select: none;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10%) rotateZ(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotateZ(720deg);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes fall-sway {
+        0% {
+          transform: translateY(-10%) rotateZ(0deg) translateX(0);
+          opacity: 1;
+        }
+        50% {
+          transform: translateX(10vw);
+        }
+        100% {
+          transform: translateY(110vh) rotateZ(-720deg) translateX(-10vw);
+          opacity: 0;
+        }
+      }
+
+      /* Neon 777 Logo for Casino */
+      .neon-logo-777 {
+        font-family: 'Yellowtail', cursive;
+        font-size: 8rem;
+        line-height: 1;
+        color: #fee; /* Light pink core for the text */
+        text-shadow:
+          0 0 7px #ff5e95,
+          0 0 10px #ff5e95,
+          0 0 21px #ff5e95,
+          0 0 42px #ef0078,
+          0 0 82px #ef0078,
+          0 0 92px #ef0078,
+          0 0 102px #ef0078,
+          0 0 151px #ef0078;
+        animation: flicker 2s infinite alternate;
+      }
+
+      @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+          text-shadow:
+            0 0 7px #ff5e95,
+            0 0 10px #ff5e95,
+            0 0 21px #ff5e95,
+            0 0 42px #ef0078,
+            0 0 82px #ef0078,
+            0 0 92px #ef0078,
+            0 0 102px #ef0078,
+            0 0 151px #ef0078;
+          opacity: 1;
+        }
+        20%, 24%, 55% {
+          text-shadow: none;
+          opacity: 0.85;
+        }
+      }
+
+      /* Neon Slot Symbol Styles */
+      .neon-seven {
+        color: #fee; /* Light pink core */
+        font-weight: bold;
+        font-family: sans-serif; /* A more standard font for a number */
+        text-shadow:
+          0 0 7px #ff5e95,
+          0 0 10px #ff5e95,
+          0 0 21px #ff5e95,
+          0 0 42px #ef0078;
+      }
+
+      .glowing-symbol {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      }
+      
+      .neon-purple-text {
+        color: #e9d5ff;
+        text-shadow:
+          0 0 5px #c084fc,
+          0 0 10px #c084fc,
+          0 0 15px #a855f7,
+          0 0 20px #a855f7;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes recheck-pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.5); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .animate-recheck-pop {
+        animation: recheck-pop 0.3s ease-out;
+      }
+      
+      @keyframes yellow-flash {
+        0% { box-shadow: 0 0 0 0 rgba(253, 224, 71, 0.7); }
+        50% { box-shadow: 0 0 20px 10px rgba(253, 224, 71, 0.7); }
+        100% { box-shadow: 0 0 0 0 rgba(253, 224, 71, 0); }
+      }
+      .animate-yellow-flash {
+        animation: yellow-flash 0.8s ease-out;
+      }
+
+      /* Hide number input arrows */
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
